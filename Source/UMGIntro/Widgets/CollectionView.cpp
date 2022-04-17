@@ -13,9 +13,9 @@
  */
 void UCollectionView::SetupData(const UDMCollection* Collection, const UAppDataStore* DataStore)
 {
-    if(!Collection || !Collection->IsValidLowLevelFast())
+    if(!IsValid(Collection))
         return;
-    if(!DataStore || !DataStore->IsValidLowLevelFast())
+    if(!IsValid(DataStore))
         return;
     
     const int itemCount = Collection->mItemIdList.Num();

@@ -8,6 +8,9 @@
 
 void UDMBaseItemCardView::SetupData(const UDMBase* BaseItem)
 {
+	if (!IsValid(BaseItem))
+		return;
+
 	mBaseItem = BaseItem;
 	
 	if(BaseItem->IsA(UDMCollection::StaticClass()))
@@ -16,6 +19,9 @@ void UDMBaseItemCardView::SetupData(const UDMBase* BaseItem)
 		SetupCollection();
 	}
 	
-	SetupImage(BaseItem->mImage->mUrl);
+	if (IsValid(BaseItem->mImage)) 
+	{
+		SetupImage(BaseItem->mImage->mUrl);
+	}
 	SetupTitle(BaseItem->mName);
 }
